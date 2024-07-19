@@ -41,12 +41,10 @@ init() {
 
   echo "\"Include = /etc/pacman.d/aurto\" must be added to /etc/pacman.conf to enable the aurto repo"
   if test -t 1; then
-    echo
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "adding the repo to pacman.conf"
       echo -e "[aurto]" >> /etc/pacman.conf        
       echo -e "SigLevel = Never" >> /etc/pacman.conf 
       echo -e "Server = file:///var/cache/pacman/aurto" >> /etc/pacman.conf 
-    fi
   fi
 }
 
