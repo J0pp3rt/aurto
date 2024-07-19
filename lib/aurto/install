@@ -35,8 +35,8 @@ init() {
   fi
 
   echo 'aurto: Adding & enabling systemd timer update tasks' >&2
-  systemctl enable --now /usr/lib/systemd/system/check-aurto-git-trigger.timer
-  systemctl enable --now /usr/lib/systemd/system/update-aurto.timer
+  systemctl enable /usr/lib/systemd/system/check-aurto-git-trigger.timer
+  systemctl enable /usr/lib/systemd/system/update-aurto.timer
   systemctl enable /usr/lib/systemd/system/update-aurto-startup.timer
 
   echo "\"Include = /etc/pacman.d/aurto\" must be added to /etc/pacman.conf to enable the aurto repo"
