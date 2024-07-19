@@ -19,7 +19,7 @@ depends=('aurutils'
 optdepends=()
 makedepends=('cargo')
 install="aurto.install"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/J0pp3rt/$pkgname/archive/v$pkgver.tar.gz")
+source=("git+https://github.com/J0pp3rt/$pkgname.git")
 sha256sums=('SKIP')
 backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'usr/lib/systemd/system/update-aurto.timer'
@@ -28,7 +28,7 @@ backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'etc/aurto/makepkg-chroot.conf')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "aurto"
   make
 }
 
