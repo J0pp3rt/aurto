@@ -28,11 +28,11 @@ backup=('usr/lib/systemd/system/check-aurto-git-trigger.timer'
         'etc/aurto/makepkg-chroot.conf')
 
 build() {
-  cd "aurto"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
   cp -r target/* "$pkgdir"/
 }
