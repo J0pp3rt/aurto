@@ -40,12 +40,11 @@ init() {
   systemctl enable /usr/lib/systemd/system/update-aurto-startup.timer
 
   echo "\"Include = /etc/pacman.d/aurto\" must be added to /etc/pacman.conf to enable the aurto repo"
-  if test -t 1; then
+
     echo "adding the repo to pacman.conf"
-      echo -e "[aurto]" >> /etc/pacman.conf        
-      echo -e "SigLevel = Never" >> /etc/pacman.conf 
-      echo -e "Server = file:///var/cache/pacman/aurto" >> /etc/pacman.conf 
-  fi
+      echo "[aurto]" | sudo tee -a /etc/pacman.conf 
+      echo "SigLevel = Never" | sudo tee -a /etc/pacman.conf 
+      echo "Server = file:///var/cache/pacman/aurto" | sudo tee -a /etc/pacman.conf 
 }
 
 # Remove aurto repo files & disable systemd timers
