@@ -58,5 +58,5 @@ function not_in_aur_packages {
 }
 
 function initialised {
-  grep -q '^Include = /etc/pacman.d/aurto$' /etc/pacman.conf
+  grep -q 'aurto' /etc/pacman.conf
 }
