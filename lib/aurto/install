@@ -41,12 +41,11 @@ init() {
 
   echo "\"Include = /etc/pacman.d/aurto\" must be added to /etc/pacman.conf to enable the aurto repo"
   if test -t 1; then
-    read -p "$(bold Add \"Include = /etc/pacman.d/aurto\" \>\> /etc/pacman.conf \?) [yN] " -n1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-      echo -e "# aurto repo\\nInclude = /etc/pacman.d/aurto" >> /etc/pacman.conf
-      yellow "Important: Before package removal \"Include = /etc/pacman.d/aurto\" must be removed from /etc/pacman.conf"
-      yellow "This can be done by running $(bold "$(cyan aurto init remove)")"
+      echo -e "[aurto]" >> /etc/pacman.conf        
+      echo -e "SigLevel = Never" >> /etc/pacman.conf 
+      echo -e "Server = file:///var/cache/pacman/aurto" >> /etc/pacman.conf 
     fi
   fi
 }
